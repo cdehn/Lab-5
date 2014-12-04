@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="Lab5">
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.password">Fall2014</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@cisc181.canrkwijj6g6.us-east-1.rds.amazonaws.com:1521:ORCL</property>
+        <property name="hibernate.connection.username">CISC181</property>
+        <property name="hibernate.default_catalog">cdehn</property>
+        <property name="hibernate.default_schema">cdehn</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    </session-factory>
+</hibernate-configuration>

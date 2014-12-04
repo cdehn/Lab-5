@@ -4,17 +4,52 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Hand {
-	private ArrayList<Card> CardsInHand;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+@Entity
+@Table(name = "Poker_Results")
+
+public class Hand {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PokerResults")
+	@SequenceGenerator(name = "SEQ_PokerResults", sequenceName = "SEQ_PokerResults", allocationSize = 1)
+	@Column(name = "id")
+	
+	private int id;
+	
+	@Transient
+	private ArrayList<Card> CardsInHand;
+	
+	@Column (name = "Strength")
 	private int HandStrength;
+		
+	@Column (name = "High_Hand")
 	private int HiHand;
+	
+	@Column (name = "Low_Hand")
 	private int LoHand;
+	
+	@Column (name = "Kicker")
 	private int Kicker;
+	
+	@Transient 
 	private boolean bScored = false;
 
-	private boolean Flush;
+	@Transient
+	private boolean Flush; 
+	
+	@Transient
 	private boolean Straight;
+	
+	@Transient
 	private boolean Ace;
 
 	public Hand(Deck d) {
@@ -255,4 +290,5 @@ public class Hand {
 			return 0;
 		}
 	};
-}
+	}
+

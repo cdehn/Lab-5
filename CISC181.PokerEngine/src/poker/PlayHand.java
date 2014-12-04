@@ -3,10 +3,22 @@ package poker;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.hibernate.HibernateException; 
+import org.hibernate.Session; 
+import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+
+
 public class PlayHand {
-
-	public static void main(String[] args) {
-
+	private static SessionFactory factory;
+		public static void main(String[] args) {		   		     
+		          factory = new AnnotationConfiguration().
+		        		  configure().
+		                  addAnnotatedClass(Hand.class).
+		                  buildSessionFactory();
+		          		  Session session = factory.openSession();
 
 
 		for (int gCount = 0; gCount <= 2000000; gCount++) {
@@ -36,8 +48,8 @@ public class PlayHand {
 
 			System.out.print("\n");
 
+			
 		}
-
 	}
-
 }
+
